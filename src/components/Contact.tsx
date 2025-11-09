@@ -70,11 +70,26 @@ const Contact = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.4 }}
-              className="text-lg text-muted-foreground max-w-2xl mx-auto"
+              className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6"
             >
-              I'm always interested in hearing about new opportunities, projects, 
-              or just having a chat about AI and technology.
+              Interested in AI collaboration or have a project in mind? Let's connect!
             </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.5 }}
+              className="flex flex-wrap justify-center gap-4 text-sm"
+            >
+              <a href="mailto:jprasadvishweshnani@gmail.com" className="text-muted-foreground hover:text-accent transition-colors">
+                📧 jprasadvishweshnani@gmail.com
+              </a>
+              <span className="text-border">•</span>
+              <a href="tel:+916305413841" className="text-muted-foreground hover:text-accent transition-colors">
+                📞 +91 6305413841
+              </a>
+              <span className="text-border">•</span>
+              <span className="text-muted-foreground">📍 Greater Noida, India</span>
+            </motion.div>
           </div>
 
           <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -109,7 +124,7 @@ const Contact = () => {
                   <div>
                     <h3 className="font-bold mb-1">Location</h3>
                     <p className="text-sm text-muted-foreground">
-                      Bennett University<br />India
+                      Greater Noida, India
                     </p>
                   </div>
                 </div>

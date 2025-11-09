@@ -49,7 +49,7 @@ const Hero = () => {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-8"
           >
             <Sparkles className="h-4 w-4 text-accent" />
-            <span className="text-sm font-medium text-accent">AI Engineer & ML Specialist</span>
+            <span className="text-sm font-medium text-accent">AI Engineer & Generative AI Specialist</span>
           </motion.div>
 
           <motion.h1
@@ -70,8 +70,8 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto"
           >
-            Building intelligent systems that transform data into actionable insights. 
-            Specializing in Deep Learning, NLP, and Computer Vision.
+            Dedicated AI enthusiast building intelligent systems with Generative AI, Deep Learning, and data-centric engineering. 
+            Transforming complex data into impactful AI solutions.
           </motion.p>
 
           <motion.div
@@ -92,7 +92,14 @@ const Hero = () => {
             <Button
               variant="glass"
               size="lg"
-              onClick={() => window.open("#", "_blank")}
+              onClick={() => {
+                const link = document.createElement("a");
+                link.href = "/resume/Prasada_Vishwesh_Resume.pdf";
+                link.download = "Prasada_Vishwesh_AI_Engineer_Resume.pdf";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }}
               className="w-full sm:w-auto"
             >
               <FileDown className="h-5 w-5" />

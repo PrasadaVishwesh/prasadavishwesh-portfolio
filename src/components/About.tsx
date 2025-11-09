@@ -2,41 +2,25 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Card } from "@/components/ui/card";
-import { Award, Code2, Zap } from "lucide-react";
+import vishweshPhoto from "@/assets/vishwesh.jpg";
 
 const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const highlights = [
-    {
-      icon: Code2,
-      label: "Projects Completed",
-      value: "15+",
-      color: "text-primary",
-    },
-    {
-      icon: Award,
-      label: "Certifications",
-      value: "6",
-      color: "text-accent",
-    },
-    {
-      icon: Zap,
-      label: "Technologies Mastered",
-      value: "20+",
-      color: "text-primary",
-    },
+    { number: "2+", label: "Years of AI/ML" },
+    { number: "10+", label: "Projects Built" },
+    { number: "7", label: "Certifications" },
   ];
 
   return (
-    <section id="about" ref={ref} className="py-20 sm:py-32 bg-gradient-subtle">
+    <section id="about" ref={ref} className="py-20 sm:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto"
         >
           <div className="text-center mb-16">
             <motion.span
@@ -45,78 +29,95 @@ const About = () => {
               transition={{ delay: 0.2 }}
               className="text-sm font-semibold text-accent uppercase tracking-wider"
             >
-              About Me
+              Get to know me
             </motion.span>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.3 }}
-              className="text-3xl sm:text-4xl md:text-5xl font-bold mt-4 mb-6"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold mt-4"
             >
-              Transforming Ideas into{" "}
-              <span className="bg-gradient-primary bg-clip-text text-transparent">
-                Intelligent Solutions
-              </span>
+              About Me
             </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.4 }}
-              className="text-lg text-muted-foreground max-w-3xl mx-auto"
-            >
-              I'm an AI Engineering student passionate about building cutting-edge machine learning 
-              solutions. My expertise spans from deep learning architectures to production-ready AI systems, 
-              with a focus on NLP, Computer Vision, and scalable data pipelines.
-            </motion.p>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.6 }}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12"
-          >
-            {highlights.map((item, idx) => {
-              const Icon = item.icon;
-              return (
+          <div className="max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ delay: 0.4, type: "spring", stiffness: 100 }}
+                className="lg:col-span-1 flex justify-center items-start"
+              >
+                <div className="relative group">
+                  <div className="absolute -inset-1 bg-gradient-primary rounded-2xl blur-lg opacity-30 group-hover:opacity-50 transition-opacity"></div>
+                  <img
+                    src={vishweshPhoto}
+                    alt="Jatangi Y D M V Prasada Vishwesh"
+                    className="relative rounded-2xl w-full max-w-[280px] h-auto object-cover shadow-elegant"
+                  />
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.5 }}
+                className="lg:col-span-2"
+              >
+                <Card className="p-8 h-full bg-card/50 backdrop-blur-sm border-border/50">
+                  <h3 className="text-2xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
+                    Dedicated AI Enthusiast
+                  </h3>
+                  <p className="text-lg text-muted-foreground leading-relaxed mb-4">
+                    Pushing boundaries in Generative AI, Deep Learning, and data-centric engineering. 
+                    I specialize in building NLP models, Vision-GPT2 systems with custom attention mechanisms, 
+                    and AI-powered applications like Smart Chief—an intelligent recipe and nutrition app.
+                  </p>
+                  <p className="text-lg text-muted-foreground leading-relaxed mb-4">
+                    Strong proficiency in Python, TensorFlow, Keras, PyTorch, and end-to-end data pipelines. 
+                    Experienced in Natural Language Processing, Computer Vision, and optimization techniques 
+                    that drive impactful AI products.
+                  </p>
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    Passionate about learning, problem-solving, and innovating to create solutions that transform 
+                    data into actionable insights and meaningful real-world impact.
+                  </p>
+                </Card>
+              </motion.div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {highlights.map((highlight, idx) => (
                 <motion.div
-                  key={item.label}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ delay: 0.7 + idx * 0.1 }}
+                  key={highlight.label}
+                  initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                  animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
+                  transition={{ 
+                    delay: 0.7 + idx * 0.1,
+                    type: "spring",
+                    stiffness: 100
+                  }}
                 >
-                  <Card className="p-6 text-center hover:shadow-elegant transition-all duration-300 hover:-translate-y-2 bg-card/50 backdrop-blur-sm border-border/50">
-                    <Icon className={`h-8 w-8 mx-auto mb-4 ${item.color}`} />
-                    <div className="text-3xl sm:text-4xl font-bold mb-2 bg-gradient-primary bg-clip-text text-transparent">
-                      {item.value}
-                    </div>
-                    <div className="text-sm text-muted-foreground font-medium">{item.label}</div>
+                  <Card className="p-6 text-center hover:shadow-glow transition-all duration-300 hover:-translate-y-2 bg-card/50 backdrop-blur-sm border-border/50 group">
+                    <motion.div 
+                      className="text-4xl sm:text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2"
+                      initial={{ scale: 0 }}
+                      animate={isInView ? { scale: 1 } : {}}
+                      transition={{ 
+                        delay: 0.9 + idx * 0.1,
+                        type: "spring",
+                        stiffness: 200
+                      }}
+                    >
+                      {highlight.number}
+                    </motion.div>
+                    <div className="text-sm text-muted-foreground font-medium">{highlight.label}</div>
                   </Card>
                 </motion.div>
-              );
-            })}
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.9 }}
-          >
-            <Card className="p-8 sm:p-10 bg-card/50 backdrop-blur-sm border-border/50">
-              <p className="text-base sm:text-lg leading-relaxed text-muted-foreground mb-6">
-                Currently pursuing B.Tech in Computer Science Engineering with specialization in 
-                Artificial Intelligence and Machine Learning at Bennett University. I combine strong 
-                theoretical foundations with hands-on experience in developing AI solutions that solve 
-                real-world problems.
-              </p>
-              <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
-                From building image captioning models using Vision Transformers to creating intelligent 
-                nutrition apps, I thrive on challenges that push the boundaries of what's possible with AI. 
-                I'm always exploring new frameworks, optimizing model performance, and staying current with 
-                the latest advancements in machine learning research.
-              </p>
-            </Card>
-          </motion.div>
+              ))}
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

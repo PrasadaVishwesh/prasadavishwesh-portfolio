@@ -43,7 +43,7 @@ const Header = () => {
           </motion.div>
 
           <nav className="hidden md:flex items-center gap-1 lg:gap-2">
-            {["About", "Skills", "Projects", "Experience", "Contact"].map((item, idx) => (
+            {["About", "Skills", "Projects", "Certifications", "Experience", "Resume", "Contact"].map((item, idx) => (
               <motion.button
                 key={item}
                 initial={{ opacity: 0, y: -20 }}
@@ -92,7 +92,14 @@ const Header = () => {
               variant="hero"
               size="sm"
               className="hidden sm:inline-flex"
-              onClick={() => window.open("#", "_blank")}
+              onClick={() => {
+                const link = document.createElement("a");
+                link.href = "/resume/Prasada_Vishwesh_Resume.pdf";
+                link.download = "Prasada_Vishwesh_AI_Engineer_Resume.pdf";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }}
             >
               <FileDown className="h-4 w-4" />
               <span className="hidden lg:inline">Resume</span>

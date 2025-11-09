@@ -3,7 +3,8 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Award } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Award, ExternalLink } from "lucide-react";
 
 const Certifications = () => {
   const ref = useRef(null);
@@ -15,36 +16,49 @@ const Certifications = () => {
       issuer: "AWS",
       date: "2024",
       category: "AI/ML",
+      link: "https://coursera.org/share/51ab3a9b6898fb09f9946d929c39e537",
     },
     {
       title: "Introduction to Generative AI",
       issuer: "Google Cloud",
       date: "2024",
       category: "AI/ML",
+      link: "https://coursera.org/share/9060161629994e420e9c5552a6965448",
     },
     {
       title: "Machine Learning with Python",
       issuer: "IBM",
-      date: "2023",
+      date: "2024",
       category: "AI/ML",
+      link: "https://coursera.org/share/e63f18ac43c11a79fbc1ce4ca6674cea",
     },
     {
       title: "Exploratory Data Analysis for Machine Learning",
       issuer: "IBM",
-      date: "2023",
+      date: "2024",
       category: "Data Science",
+      link: "https://coursera.org/share/d185ea58da39d367d90a4f458c829dda",
     },
     {
       title: "Google Advanced Data Analytics Capstone",
       issuer: "Google",
       date: "2023",
       category: "Data Science",
+      link: "https://coursera.org/share/7463617d75229177530e1c58a78c6a5d",
+    },
+    {
+      title: "Foundations of Project Management",
+      issuer: "Google",
+      date: "2023",
+      category: "Management",
+      link: "https://coursera.org/share/ec44a375b4c4344efc640b468cd4bb25",
     },
     {
       title: "Computer Vision with Embedded Machine Learning",
       issuer: "Edge Impulse",
       date: "2023",
       category: "Computer Vision",
+      link: "https://coursera.org/share/3f05e5be25f80bda26d8e8c1cc474db5",
     },
   ];
 
@@ -83,25 +97,41 @@ const Certifications = () => {
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ delay: 0.4 + idx * 0.1 }}
               >
-                <Card className="p-6 h-full hover:shadow-elegant transition-all duration-300 hover:-translate-y-2 bg-card/50 backdrop-blur-sm border-border/50 group">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="p-3 rounded-xl bg-gradient-primary group-hover:shadow-glow transition-all duration-300">
+                <Card className="p-6 h-full hover:shadow-glow transition-all duration-300 hover:-translate-y-2 bg-card/50 backdrop-blur-sm border-border/50 group cursor-pointer"
+                  onClick={() => window.open(cert.link, "_blank")}
+                >
+                  <div className="flex items-start justify-between gap-4 mb-4">
+                    <motion.div 
+                      className="p-3 rounded-xl bg-gradient-primary group-hover:shadow-glow transition-all duration-300"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
                       <Award className="h-6 w-6 text-primary-foreground" />
-                    </div>
-                    <div className="flex-1">
-                      <Badge
-                        variant="secondary"
-                        className="mb-2 bg-accent/10 text-accent border border-accent/20"
-                      >
-                        {cert.category}
-                      </Badge>
-                    </div>
+                    </motion.div>
+                    <Badge
+                      variant="secondary"
+                      className="bg-accent/10 text-accent border border-accent/20"
+                    >
+                      {cert.category}
+                    </Badge>
                   </div>
-                  <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="text-lg font-bold mb-3 group-hover:text-primary transition-colors leading-tight">
                     {cert.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground mb-1 font-medium">{cert.issuer}</p>
-                  <p className="text-xs text-muted-foreground">{cert.date}</p>
+                  <p className="text-sm text-muted-foreground mb-1 font-semibold">{cert.issuer}</p>
+                  <p className="text-xs text-muted-foreground mb-4">{cert.date}</p>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="w-full gap-2 group-hover:bg-accent/10 transition-colors"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      window.open(cert.link, "_blank");
+                    }}
+                  >
+                    <ExternalLink className="h-3 w-3" />
+                    View Credential
+                  </Button>
                 </Card>
               </motion.div>
             ))}
