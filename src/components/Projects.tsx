@@ -43,7 +43,7 @@ const Projects = () => {
         "Learned API integration, React data management, and UI building",
         "Showcased ability to independently design, develop, and execute full-stack project",
       ],
-      github: "https://github.com/PrasadaVishwesh",
+      github: "https://github.com/PrasadaVishwesh/Smart-Chef",
       demo: "https://smart-chief-plan.lovable.app/",
       portfolio: "https://prasada-vishwesh-portfolio.lovable.app/",
       detailPage: "/projects/smart-chief",
