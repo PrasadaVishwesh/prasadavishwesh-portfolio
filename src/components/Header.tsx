@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, FileDown } from "lucide-react";
 import { motion, useScroll } from "framer-motion";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,7 +44,7 @@ const Header = () => {
           </motion.div>
 
           <nav className="hidden md:flex items-center gap-1 lg:gap-2">
-            {["About", "Skills", "Projects", "Certifications", "Experience", "Resume", "Contact"].map((item, idx) => (
+            {["About", "Skills", "Projects", "Certifications", "Experience", "Contact"].map((item, idx) => (
               <motion.button
                 key={item}
                 initial={{ opacity: 0, y: -20 }}
@@ -88,6 +89,7 @@ const Header = () => {
                 <Mail className="h-5 w-5" />
               </Button>
             </a>
+            <ThemeToggle />
             <Button
               variant="hero"
               size="sm"

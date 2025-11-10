@@ -1,14 +1,16 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, ArrowRight } from "lucide-react";
 
 const Projects = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const navigate = useNavigate();
 
   const projects = [
     {
@@ -24,6 +26,7 @@ const Projects = () => {
       ],
       github: "https://github.com/PrasadaVishwesh",
       demo: "https://image-captioning-vishwesh.lovable.app/",
+      detailPage: "/projects/vision-gpt2",
       metrics: [
         { label: "BLEU-4", value: "0.32" },
         { label: "ROUGE-L", value: "0.54" },
@@ -43,6 +46,7 @@ const Projects = () => {
       github: "https://github.com/PrasadaVishwesh",
       demo: "https://smart-chief-plan.lovable.app/",
       portfolio: "https://prasada-vishwesh-portfolio.lovable.app/",
+      detailPage: "/projects/smart-chief",
     },
   ];
 
@@ -136,9 +140,18 @@ const Projects = () => {
 
                   <div className="flex flex-wrap gap-3 mt-auto">
                     <Button
+                      variant="hero"
+                      size="sm"
+                      className="w-full"
+                      onClick={() => navigate(project.detailPage)}
+                    >
+                      <ArrowRight className="h-4 w-4" />
+                      View Details
+                    </Button>
+                    <Button
                       variant="glass"
                       size="sm"
-                      className="flex-1 min-w-[120px]"
+                      className="flex-1 min-w-[110px]"
                       onClick={() => window.open(project.github, "_blank")}
                     >
                       <Github className="h-4 w-4" />
@@ -147,23 +160,12 @@ const Projects = () => {
                     <Button
                       variant="outline"
                       size="sm"
-                      className="flex-1 min-w-[120px]"
+                      className="flex-1 min-w-[110px]"
                       onClick={() => window.open(project.demo, "_blank")}
                     >
                       <ExternalLink className="h-4 w-4" />
                       Live Demo
                     </Button>
-                    {project.portfolio && (
-                      <Button
-                        variant="hero"
-                        size="sm"
-                        className="flex-1 min-w-[120px]"
-                        onClick={() => window.open(project.portfolio, "_blank")}
-                      >
-                        <ExternalLink className="h-4 w-4" />
-                        Portfolio
-                      </Button>
-                    )}
                   </div>
                 </Card>
               </motion.div>
