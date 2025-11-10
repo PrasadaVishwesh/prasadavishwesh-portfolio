@@ -11,6 +11,19 @@ const Achievements = () => {
 
   const achievements = [
     {
+      icon: Award,
+      category: "Professional Membership",
+      title: "IEEE Student Member",
+      description: "Active member of IEEE (Institute of Electrical and Electronics Engineers), the world's largest technical professional organization advancing technology for humanity",
+      date: "2023 - Present",
+      highlights: [
+        "Access to cutting-edge research publications",
+        "Networking with global tech professionals",
+        "Participation in IEEE conferences and workshops",
+      ],
+      color: "accent",
+    },
+    {
       icon: Trophy,
       category: "Academic Excellence",
       title: "AI/ML Specialization Scholar",
