@@ -24,7 +24,7 @@ const Projects = () => {
         "Optimized models and managed end-to-end training pipelines",
         "Evaluated with BLEU, ROUGE, and other metrics; debugged and improved caption quality",
       ],
-      github: "https://github.com/PrasadaVishwesh",
+      github: "https://github.com/PrasadaVishwesh/image-captioning-vishwesh",
       demo: "https://image-captioning-vishwesh.lovable.app/",
       detailPage: "/projects/vision-gpt2",
       metrics: [
@@ -43,7 +43,7 @@ const Projects = () => {
         "Learned API integration, React data management, and UI building",
         "Showcased ability to independently design, develop, and execute full-stack project",
       ],
-      github: "https://github.com/PrasadaVishwesh/Smart-Chef",
+      github: "https://github.com/PrasadaVishwesh/smart-chief-plan",
       demo: "https://smart-chief-plan.lovable.app/",
       portfolio: "https://prasada-vishwesh-portfolio.lovable.app/",
       detailPage: "/projects/smart-chief",

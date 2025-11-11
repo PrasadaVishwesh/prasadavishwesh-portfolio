@@ -162,7 +162,7 @@ def train_epoch(model, dataloader, optimizer, criterion):
               </div>
 
               <div className="flex gap-4">
-                <Button variant="hero" size="lg" onClick={() => window.open("https://github.com/PrasadaVishwesh", "_blank")}>
+                <Button variant="hero" size="lg" onClick={() => window.open("https://github.com/PrasadaVishwesh/image-captioning-vishwesh", "_blank")}>
                   <Github className="h-5 w-5" />
                   View Source
                 </Button>

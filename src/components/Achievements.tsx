@@ -147,12 +147,20 @@ const Achievements = () => {
                   stiffness: 100 
                 }}
               >
-                <Card className="p-8 h-full hover:shadow-glow transition-all duration-500 hover:-translate-y-2 bg-card/50 backdrop-blur-sm border-border/50 group">
-                  <div className="flex items-start gap-4 mb-4">
+                <Card className="p-8 h-full hover:shadow-glow transition-all duration-500 hover:-translate-y-2 bg-card/50 backdrop-blur-sm border-border/50 group overflow-hidden relative">
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    initial={false}
+                  />
+                  <motion.div
+                    className="absolute -top-20 -right-20 w-40 h-40 bg-accent/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                    initial={false}
+                  />
+                  <div className="flex items-start gap-4 mb-4 relative z-10">
                     <motion.div
                       className={`p-3 rounded-xl bg-gradient-${achievement.color} group-hover:shadow-glow transition-all duration-300`}
-                      whileHover={{ scale: 1.1, rotate: 10 }}
-                      transition={{ type: "spring", stiffness: 300 }}
+                      whileHover={{ scale: 1.15, rotate: 360 }}
+                      transition={{ type: "spring", stiffness: 200, damping: 15 }}
                     >
                       <achievement.icon className="h-6 w-6 text-primary-foreground" />
                     </motion.div>
@@ -167,32 +175,47 @@ const Achievements = () => {
                       >
                         {achievement.category}
                       </Badge>
-                      <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                      <motion.h3 
+                        className="text-xl font-bold mb-2 group-hover:text-primary transition-colors"
+                        whileHover={{ x: 5 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
                         {achievement.title}
-                      </h3>
+                      </motion.h3>
                     </div>
                   </div>
 
-                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                  <motion.p 
+                    className="text-sm text-muted-foreground mb-4 leading-relaxed relative z-10 group-hover:text-foreground transition-colors duration-300"
+                  >
                     {achievement.description}
-                  </p>
+                  </motion.p>
 
-                  <div className="flex items-center gap-2 mb-4 text-xs text-muted-foreground">
-                    <div className="h-1 w-1 rounded-full bg-accent animate-pulse" />
+                  <div className="flex items-center gap-2 mb-4 text-xs text-muted-foreground relative z-10">
+                    <motion.div 
+                      className="h-1 w-1 rounded-full bg-accent"
+                      animate={{ scale: [1, 1.5, 1], opacity: [1, 0.5, 1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    />
                     {achievement.date}
                   </div>
 
-                  <div className="space-y-2">
+                  <div className="space-y-2 relative z-10">
                     {achievement.highlights.map((highlight, highlightIdx) => (
                       <motion.div
                         key={highlightIdx}
                         initial={{ opacity: 0, x: -20 }}
                         animate={isInView ? { opacity: 1, x: 0 } : {}}
                         transition={{ delay: 0.7 + idx * 0.1 + highlightIdx * 0.05 }}
-                        className="flex items-start gap-2"
+                        className="flex items-start gap-2 group/item"
+                        whileHover={{ x: 5 }}
                       >
-                        <div className="h-1 w-1 rounded-full bg-accent mt-2 flex-shrink-0" />
-                        <p className="text-xs text-muted-foreground leading-relaxed">{highlight}</p>
+                        <motion.div 
+                          className="h-1 w-1 rounded-full bg-accent mt-2 flex-shrink-0"
+                          whileHover={{ scale: 2 }}
+                          transition={{ type: "spring", stiffness: 400 }}
+                        />
+                        <p className="text-xs text-muted-foreground leading-relaxed group-hover/item:text-foreground transition-colors">{highlight}</p>
                       </motion.div>
                     ))}
                   </div>

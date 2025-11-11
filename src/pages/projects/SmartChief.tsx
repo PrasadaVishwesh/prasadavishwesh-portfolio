@@ -178,7 +178,7 @@ const useRecipeManager = () => {
               </div>
 
               <div className="flex gap-4">
-                <Button variant="hero" size="lg" onClick={() => window.open("https://github.com/PrasadaVishwesh/Smart-Chef", "_blank")}>
+                <Button variant="hero" size="lg" onClick={() => window.open("https://github.com/PrasadaVishwesh/smart-chief-plan", "_blank")}>
                   <Github className="h-5 w-5" />
                   View Source
                 </Button>

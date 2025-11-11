@@ -119,6 +119,80 @@ const Skills = () => {
             </motion.h2>
           </div>
 
+          {/* AI/ML Frameworks Visual Comparison */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.4 }}
+            className="mb-12"
+          >
+            <Card className="p-8 bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm border-border/50">
+              <h3 className="text-2xl font-bold mb-8 text-center flex items-center justify-center gap-3">
+                <span className="h-1 w-12 rounded-full bg-gradient-primary"></span>
+                AI/ML Frameworks Proficiency
+                <span className="h-1 w-12 rounded-full bg-gradient-primary"></span>
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 items-end">
+                {skillCategories
+                  .find((cat) => cat.title === "AI/ML Frameworks")
+                  ?.skills.map((skill, idx) => (
+                    <motion.div
+                      key={skill.name}
+                      initial={{ opacity: 0, y: 40 }}
+                      animate={isInView ? { opacity: 1, y: 0 } : {}}
+                      transition={{ delay: 0.6 + idx * 0.1 }}
+                      className="flex flex-col items-center group"
+                    >
+                      <motion.div
+                        className="relative w-full flex items-end justify-center mb-4"
+                        style={{ height: "200px" }}
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        <motion.div
+                          initial={{ height: 0 }}
+                          animate={isInView ? { height: `${(skill.level / 100) * 200}px` } : {}}
+                          transition={{
+                            delay: 0.8 + idx * 0.1,
+                            duration: 1,
+                            ease: "easeOut",
+                          }}
+                          className="w-16 bg-gradient-primary rounded-t-lg relative overflow-hidden group-hover:shadow-glow transition-all duration-300"
+                        >
+                          <motion.div
+                            className="absolute inset-0 bg-gradient-to-t from-accent/30 to-transparent"
+                            animate={{
+                              opacity: [0.3, 0.6, 0.3],
+                            }}
+                            transition={{
+                              duration: 2,
+                              repeat: Infinity,
+                              ease: "easeInOut",
+                            }}
+                          />
+                        </motion.div>
+                      </motion.div>
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={isInView ? { opacity: 1 } : {}}
+                        transition={{ delay: 1 + idx * 0.1 }}
+                        className="text-center"
+                      >
+                        <Badge
+                          variant="secondary"
+                          className="mb-2 bg-primary/10 text-primary border-primary/20 border text-xs font-bold group-hover:bg-primary/20 transition-colors"
+                        >
+                          {skill.level}%
+                        </Badge>
+                        <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
+                          {skill.name}
+                        </p>
+                      </motion.div>
+                    </motion.div>
+                  ))}
+              </div>
+            </Card>
+          </motion.div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {skillCategories.map((category, categoryIdx) => (
               <motion.div
