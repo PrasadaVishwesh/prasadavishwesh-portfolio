@@ -24,15 +24,22 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
+    // Send email via mailto link
+    const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    );
+    
+    window.location.href = `mailto:jprasadvishweshnani@gmail.com?subject=${subject}&body=${body}`;
+    
     setTimeout(() => {
       toast({
-        title: "Message sent!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
+        title: "Email client opened!",
+        description: "Please send the email from your mail app to complete your message.",
       });
       setFormData({ name: "", email: "", message: "" });
       setIsSubmitting(false);
-    }, 1000);
+    }, 500);
   };
 
   const handleChange = (

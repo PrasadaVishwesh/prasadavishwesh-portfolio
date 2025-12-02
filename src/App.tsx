@@ -8,6 +8,8 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import VisionGPT2 from "./pages/projects/VisionGPT2";
 import SmartChief from "./pages/projects/SmartChief";
+import HandSignDetection from "./pages/projects/HandSignDetection";
+import PlateIntelligence from "./pages/projects/PlateIntelligence";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +29,8 @@ const App = () => {
             <Route path="/" element={<Index />} />
             <Route path="/projects/vision-gpt2" element={<VisionGPT2 />} />
             <Route path="/projects/smart-chief" element={<SmartChief />} />
+            <Route path="/projects/hand-sign-detection" element={<HandSignDetection />} />
+            <Route path="/projects/plate-intelligence" element={<PlateIntelligence />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
