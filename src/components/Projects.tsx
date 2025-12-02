@@ -45,8 +45,45 @@ const Projects = () => {
       ],
       github: "https://github.com/PrasadaVishwesh/smart-chief-plan",
       demo: "https://smart-chief-plan.lovable.app/",
-      portfolio: "https://prasada-vishwesh-portfolio.lovable.app/",
       detailPage: "/projects/smart-chief",
+    },
+    {
+      title: "Hand Sign Detection AI",
+      description:
+        "Real-time hand gesture recognition system using deep learning and computer vision to detect and classify hand signs for accessibility and communication applications.",
+      tech: ["TensorFlow", "OpenCV", "MediaPipe", "Python", "CNN", "Deep Learning"],
+      outcomes: [
+        "Developed real-time hand gesture recognition using TensorFlow and OpenCV",
+        "Implemented MediaPipe for efficient hand landmark detection",
+        "Created custom CNN model for accurate hand sign classification",
+        "Built interactive web interface for live gesture detection",
+      ],
+      github: "https://github.com/PrasadaVishwesh/hang-sign-detection-vishwesh-ai",
+      demo: "https://vishwesh-handsign-detection.netlify.app/",
+      detailPage: "/projects/hand-sign-detection",
+      metrics: [
+        { label: "Accuracy", value: "95%+" },
+        { label: "FPS", value: "30+" },
+      ],
+    },
+    {
+      title: "Plate Intelligence Hub",
+      description:
+        "Intelligent license plate recognition system using deep learning and computer vision for automated vehicle identification, parking management, and traffic monitoring.",
+      tech: ["Python", "TensorFlow", "OpenCV", "YOLO", "OCR", "Deep Learning"],
+      outcomes: [
+        "Implemented YOLO-based license plate detection with 97%+ accuracy",
+        "Integrated OCR for accurate character recognition from detected plates",
+        "Built real-time processing pipeline for video stream analysis",
+        "Created web interface for easy plate detection and management",
+      ],
+      github: "https://github.com/PrasadaVishwesh/plate-intelligence-hub",
+      demo: "https://palte-intelligence-vishwesh.netlify.app/",
+      detailPage: "/projects/plate-intelligence",
+      metrics: [
+        { label: "Accuracy", value: "97%+" },
+        { label: "OCR Rate", value: "94%+" },
+      ],
     },
   ];
 
