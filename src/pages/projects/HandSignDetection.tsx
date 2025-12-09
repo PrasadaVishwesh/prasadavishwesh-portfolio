@@ -92,7 +92,7 @@ const HandSignDetection = () => {
                   <Github className="h-5 w-5" />
                   View Source
                 </Button>
-                <Button variant="glass" size="lg" onClick={() => window.open("https://vishwesh-handsign-detection.netlify.app/", "_blank")}>
+                <Button variant="glass" size="lg" onClick={() => window.open("https://hang-sign-detection-vishwesh-ai.vercel.app/", "_blank")}>
                   <ExternalLink className="h-5 w-5" />
                   Live Demo
                 </Button>

@@ -25,7 +25,7 @@ const Projects = () => {
         "Evaluated with BLEU, ROUGE, and other metrics; debugged and improved caption quality",
       ],
       github: "https://github.com/PrasadaVishwesh/image-captioning-vishwesh",
-      demo: "https://image-captioning-vishwesh.lovable.app/",
+      demo: "https://image-captioning-vishwesh.vercel.app/",
       detailPage: "/projects/vision-gpt2",
       metrics: [
         { label: "BLEU-4", value: "0.32" },
@@ -44,7 +44,7 @@ const Projects = () => {
         "Showcased ability to independently design, develop, and execute full-stack project",
       ],
       github: "https://github.com/PrasadaVishwesh/smart-chief-plan",
-      demo: "https://smart-chief-plan.lovable.app/",
+      demo: "https://smart-chef-prasadavishwesh.vercel.app/",
       detailPage: "/projects/smart-chief",
     },
     {
@@ -59,7 +59,7 @@ const Projects = () => {
         "Built interactive web interface for live gesture detection",
       ],
       github: "https://github.com/PrasadaVishwesh/hang-sign-detection-vishwesh-ai",
-      demo: "https://vishwesh-handsign-detection.netlify.app/",
+      demo: "https://hang-sign-detection-vishwesh-ai.vercel.app/",
       detailPage: "/projects/hand-sign-detection",
       metrics: [
         { label: "Accuracy", value: "95%+" },

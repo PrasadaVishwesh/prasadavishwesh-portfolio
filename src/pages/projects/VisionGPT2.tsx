@@ -166,7 +166,7 @@ def train_epoch(model, dataloader, optimizer, criterion):
                   <Github className="h-5 w-5" />
                   View Source
                 </Button>
-                <Button variant="glass" size="lg" onClick={() => window.open("https://image-captioning-vishwesh.lovable.app/", "_blank")}>
+                <Button variant="glass" size="lg" onClick={() => window.open("https://image-captioning-vishwesh.vercel.app/", "_blank")}>
                   <ExternalLink className="h-5 w-5" />
                   Live Demo
                 </Button>

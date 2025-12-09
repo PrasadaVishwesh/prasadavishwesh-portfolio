@@ -182,7 +182,7 @@ const useRecipeManager = () => {
                   <Github className="h-5 w-5" />
                   View Source
                 </Button>
-                <Button variant="glass" size="lg" onClick={() => window.open("https://smart-chief-plan.lovable.app/", "_blank")}>
+                <Button variant="glass" size="lg" onClick={() => window.open("https://smart-chef-prasadavishwesh.vercel.app/", "_blank")}>
                   <ExternalLink className="h-5 w-5" />
                   Live Demo
                 </Button>
