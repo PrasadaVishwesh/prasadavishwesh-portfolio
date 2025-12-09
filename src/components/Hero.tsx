@@ -94,8 +94,8 @@ const Hero = () => {
               size="lg"
               onClick={() => {
                 const link = document.createElement("a");
-                link.href = "/resume/Prasada_Vishwesh_Resume.pdf";
-                link.download = "Prasada_Vishwesh_AI_Engineer_Resume.pdf";
+                link.href = "/resume/PrasadaVishwesh_SDE.pdf";
+                link.download = "PrasadaVishwesh_SDE.pdf";
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
