@@ -85,6 +85,20 @@ const Projects = () => {
         { label: "OCR Rate", value: "94%+" },
       ],
     },
+    {
+      title: "S.V. Real Estate – Web Application",
+      description:
+        "Dynamic and responsive real estate web application that helps users browse and explore property listings with ease. Features property search and filtering, intuitive UI/UX, and visually rich listings for prospective buyers, sellers, and renters.",
+      tech: ["React.js", "JavaScript", "HTML", "CSS", "Responsive Design"],
+      outcomes: [
+        "Built property search and filtering functionality for seamless user navigation",
+        "Designed intuitive UI/UX for better user engagement and experience",
+        "Displayed property details including price, location, and relevant images",
+        "Demonstrated full-stack web development skills with real-world application",
+      ],
+      demo: "https://sv-real-estate-tau.vercel.app/",
+      detailPage: "/projects/sv-real-estate",
+    },
   ];
 
   return (
