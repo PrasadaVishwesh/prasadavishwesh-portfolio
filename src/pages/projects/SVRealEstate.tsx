@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { ArrowLeft, ExternalLink, Home, Search, MapPin, Building } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import svRealEstatePreview from "@/assets/sv-real-estate-preview.png";
 
 const SVRealEstate = () => {
   const navigate = useNavigate();
@@ -79,6 +80,30 @@ const SVRealEstate = () => {
                 </Button>
               </div>
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Preview Screenshot Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="max-w-5xl mx-auto"
+          >
+            <div className="relative group">
+              <div className="absolute -inset-2 bg-gradient-primary rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity" />
+              <img
+                src={svRealEstatePreview}
+                alt="S.V. Real Estate Homepage Preview"
+                className="relative rounded-2xl shadow-elegant w-full border border-border/50"
+              />
+            </div>
+            <p className="text-center text-sm text-muted-foreground mt-4">
+              Homepage featuring property search, buy/rent options, and trusted customer testimonials
+            </p>
           </motion.div>
         </div>
       </section>
