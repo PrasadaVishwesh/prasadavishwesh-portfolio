@@ -19,8 +19,8 @@ const contactSchema = z.object({
 
 // Simple in-memory rate limiting (resets on function cold start)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
-const RATE_LIMIT_MAX = 5;
-const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
+const RATE_LIMIT_MAX = 3; // Reduced from 5 for better protection
+const RATE_LIMIT_WINDOW_MS = 5 * 60 * 1000; // 5 minutes (increased from 1 minute)
 
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
