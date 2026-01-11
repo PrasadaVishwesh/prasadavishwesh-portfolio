@@ -20,9 +20,21 @@ const Contact = () => {
     email: "",
     message: "",
   });
+  // Honeypot field to catch bots - if filled, submission is rejected
+  const [honeypot, setHoneypot] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // If honeypot is filled, silently reject (bot detected)
+    if (honeypot) {
+      toast({
+        title: "Message sent!",
+        description: "Thank you for reaching out. I'll get back to you soon!",
+      });
+      return;
+    }
+    
     setIsSubmitting(true);
 
     try {
@@ -41,8 +53,11 @@ const Contact = () => {
         description: "Thank you for reaching out. I'll get back to you soon!",
       });
       setFormData({ name: "", email: "", message: "" });
-    } catch (error: any) {
-      console.error("Error sending message:", error);
+    } catch (error: unknown) {
+      // Only log detailed errors in development
+      if (import.meta.env.DEV) {
+        console.error("Error sending message:", error);
+      }
       toast({
         title: "Failed to send message",
         description: "Please try again or email me directly.",
@@ -157,6 +172,17 @@ const Contact = () => {
             >
               <Card className="p-8 bg-card/50 backdrop-blur-sm border-border/50">
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Honeypot field - hidden from users, catches bots */}
+                  <div className="absolute -left-[9999px]" aria-hidden="true">
+                    <Input
+                      type="text"
+                      name="website"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                    />
+                  </div>
                   <div className="space-y-2">
                     <Label htmlFor="name">Name</Label>
                     <Input
