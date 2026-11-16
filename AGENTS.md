@@ -1,0 +1,1 @@
+- Keep the portfolio on its existing React + Vite client architecture and preserve current routes and integrations; a visual refresh should not introduce a framework migration or disrupt working site behavior.

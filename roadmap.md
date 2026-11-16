@@ -1,0 +1,4 @@
+- [x] Complete the requested read-only security audit without modifying project code.
+- [ ] Review the uploaded design brief and apply its requested portfolio updates.
+- [ ] Replace the portfolio profile picture with the newly uploaded image and verify it displays.
+- [ ] Verify changes, reread this roadmap, and commit the work.
