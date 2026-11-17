@@ -10,14 +10,14 @@ const Header = () => {
   const sectionHref = (name: string) => location.pathname === "/" ? `#${name.toLowerCase()}` : `/#${name.toLowerCase()}`;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
-      <div className="container mx-auto flex min-h-16 items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 border-b border-border bg-background">
+      <div className="container mx-auto flex min-h-16 items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
         <a href={sectionHref("hero")} className="shrink-0 text-sm font-semibold text-foreground" aria-label="Vishwesh portfolio home">
-          PV<span className="ml-1 text-primary">/</span>
+          PV<span className="ml-1 text-primary">.</span>
         </a>
-        <nav aria-label="Main navigation" className="hidden items-center gap-1 overflow-x-auto whitespace-nowrap md:flex">
+        <nav aria-label="Main navigation" className="hidden items-center gap-0.5 whitespace-nowrap lg:flex">
           {navigation.map((item) => (
-            <a key={item} href={sectionHref(item)} className="rounded px-2.5 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:text-foreground">
+            <a key={item} href={sectionHref(item)} className="rounded-sm px-2 py-2 text-xs text-muted-foreground transition-colors hover:text-foreground focus-visible:text-foreground">
               {item}
             </a>
           ))}
@@ -34,13 +34,13 @@ const Header = () => {
           </a>
           <ThemeToggle />
           <a href="/resume/PrasadaVishwesh_SDE.pdf" download="PrasadaVishwesh_SDE.pdf" className="hidden sm:inline-flex">
-            <Button size="sm" variant="outline"><FileDown className="mr-2 h-4 w-4" />Resume</Button>
+            <Button size="sm" variant="outline"><FileDown className="h-4 w-4" />Resume</Button>
           </a>
         </div>
       </div>
-      <nav aria-label="Mobile navigation" className="flex gap-1 overflow-x-auto border-t border-border px-3 py-1.5 md:hidden">
+      <nav aria-label="Mobile navigation" className="flex gap-1 overflow-x-auto border-t border-border px-3 py-1.5 lg:hidden">
         {navigation.map((item) => (
-          <a key={item} href={sectionHref(item)} className="shrink-0 rounded px-2.5 py-1.5 text-xs text-muted-foreground hover:text-foreground focus-visible:text-foreground">{item}</a>
+          <a key={item} href={sectionHref(item)} className="shrink-0 rounded-sm px-2.5 py-1.5 text-xs text-muted-foreground hover:text-foreground focus-visible:text-foreground">{item}</a>
         ))}
       </nav>
     </header>
