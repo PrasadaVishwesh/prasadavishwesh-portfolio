@@ -1,31 +1,34 @@
-import { motion, useReducedMotion } from "framer-motion";
-import type { ReactNode } from "react";
+import type { ElementType, ReactNode } from "react";
+import { cn } from "@/lib/utils";
+import { useInView } from "@/hooks/use-in-view";
 
 interface RevealProps {
   children: ReactNode;
   className?: string;
+  /** Stagger delay in ms, applied when the element enters view */
   delay?: number;
+  as?: ElementType;
 }
 
 /**
- * One restrained entrance per block: a short fade with an 8px rise, played once when it scrolls into view.
- * Renders a plain div when the user prefers reduced motion.
+ * Fades an element in with a short rise the first time it scrolls into view.
+ * CSS-driven (no animation library), and visible immediately for reduced-motion users.
  */
-const Reveal = ({ children, className, delay = 0 }: RevealProps) => {
-  const reduceMotion = useReducedMotion();
-
-  if (reduceMotion) return <div className={className}>{children}</div>;
+const Reveal = ({ children, className, delay = 0, as: Tag = "div" }: RevealProps) => {
+  const [ref, inView] = useInView<HTMLElement>();
 
   return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, y: 8 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "0px 0px -48px 0px" }}
-      transition={{ duration: 0.35, ease: "easeOut", delay }}
+    <Tag
+      ref={ref}
+      style={inView && delay ? { transitionDelay: `${delay}ms` } : undefined}
+      className={cn(
+        "transition-[opacity,transform] duration-500 ease-out motion-reduce:transition-none",
+        inView ? "opacity-100" : "translate-y-3 opacity-0",
+        className,
+      )}
     >
       {children}
-    </motion.div>
+    </Tag>
   );
 };
 

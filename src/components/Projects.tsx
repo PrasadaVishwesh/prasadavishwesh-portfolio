@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
 import Section from "@/components/Section";
+import Reveal from "@/components/Reveal";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { projects } from "@/data/projects";
@@ -16,7 +17,7 @@ const Projects = () => (
   >
     <ol className="divide-y divide-border">
       {projects.map((project, index) => (
-        <li key={project.slug} className="py-10 first:pt-0 last:pb-0">
+        <Reveal as="li" key={project.slug} className="py-10 first:pt-0 last:pb-0">
           <article aria-labelledby={`project-${project.slug}`}>
             <div className="flex items-baseline justify-between gap-4">
               <h3 id={`project-${project.slug}`} className="text-xl font-semibold leading-snug">
@@ -58,7 +59,7 @@ const Projects = () => (
               <Button asChild size="sm">
                 <Link to={project.path} aria-label={`View details: ${project.title}`}>
                   View details
-                  <ArrowRight />
+                  <ArrowRight className="transition-transform duration-150 group-hover:translate-x-0.5" />
                 </Link>
               </Button>
               {project.github && (
@@ -79,7 +80,7 @@ const Projects = () => (
               </Button>
             </div>
           </article>
-        </li>
+        </Reveal>
       ))}
     </ol>
   </Section>

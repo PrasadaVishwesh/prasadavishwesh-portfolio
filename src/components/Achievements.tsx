@@ -1,4 +1,5 @@
 import Section from "@/components/Section";
+import Reveal from "@/components/Reveal";
 
 const achievements = [
   {
@@ -78,7 +79,7 @@ const Achievements = () => (
   >
     <ol className="divide-y divide-border border-y border-border">
       {achievements.map((achievement, index) => (
-        <li key={achievement.title} className="py-6">
+        <Reveal as="li" key={achievement.title} delay={Math.min(index, 3) * 50} className="py-6">
           <article aria-labelledby={`achievement-${index}`}>
             <p className="flex flex-wrap items-center gap-x-3 text-xs text-muted-foreground">
               <span className="font-medium uppercase tracking-[0.08em]">{achievement.category}</span>
@@ -95,7 +96,7 @@ const Achievements = () => (
               ))}
             </ul>
           </article>
-        </li>
+        </Reveal>
       ))}
     </ol>
   </Section>

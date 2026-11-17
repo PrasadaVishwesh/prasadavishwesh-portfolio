@@ -85,7 +85,7 @@ const ProjectLayout = ({
       <main id="main" tabIndex={-1} className="outline-none">
         <section aria-labelledby="project-title" className="border-b border-border py-10 sm:py-14">
           <div className="page-container">
-            <nav aria-label="Breadcrumb">
+            <nav aria-label="Breadcrumb" className="motion-safe:animate-fade-in">
               <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
                 <li>
                   <Link to="/" className="transition-colors hover:text-foreground">
@@ -105,7 +105,7 @@ const ProjectLayout = ({
               </ol>
             </nav>
 
-            <div className="mt-8 max-w-3xl">
+            <div className="mt-8 max-w-3xl motion-safe:animate-fade-up" style={{ animationDelay: "80ms" }}>
               {category && <p className="eyebrow">{category}</p>}
               <h1 id="project-title" className="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">
                 {title}

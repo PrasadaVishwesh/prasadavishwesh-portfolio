@@ -24,8 +24,8 @@ const Section = ({ id, index, eyebrow, title, description, tone = "default", chi
     className={cn("border-b border-border py-16 sm:py-20 lg:py-24", tone === "muted" && "bg-muted/40")}
   >
     <div className="page-container">
-      <Reveal className="grid gap-8 lg:grid-cols-[0.65fr_1.35fr] lg:gap-16">
-        <header className="lg:sticky lg:top-24 lg:self-start">
+      <div className="grid gap-8 lg:grid-cols-[0.65fr_1.35fr] lg:gap-16">
+        <Reveal as="header" className="lg:sticky lg:top-24 lg:self-start">
           {eyebrow && (
             <p className="eyebrow">
               {index ? `${index} / ` : ""}
@@ -36,9 +36,11 @@ const Section = ({ id, index, eyebrow, title, description, tone = "default", chi
             {title}
           </h2>
           {description && <p className="mt-3 max-w-xs text-sm leading-6 text-muted-foreground">{description}</p>}
-        </header>
-        <div className="min-w-0">{children}</div>
-      </Reveal>
+        </Reveal>
+        <Reveal delay={80} className="min-w-0">
+          {children}
+        </Reveal>
+      </div>
     </div>
   </section>
 );

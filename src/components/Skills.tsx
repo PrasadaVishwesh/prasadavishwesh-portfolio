@@ -1,4 +1,5 @@
 import Section from "@/components/Section";
+import { useInView } from "@/hooks/use-in-view";
 
 const skillCategories = [
   {
@@ -76,6 +77,18 @@ const skillCategories = [
   },
 ];
 
+const SkillBar = ({ level, delay }: { level: number; delay: number }) => {
+  const [ref, inView] = useInView<HTMLDivElement>({ rootMargin: "0px 0px -24px 0px" });
+  return (
+    <div ref={ref} aria-hidden="true" className="mt-1.5 h-1 overflow-hidden rounded-full bg-muted">
+      <div
+        className="h-full origin-left rounded-full bg-primary transition-transform duration-700 ease-out motion-reduce:transition-none"
+        style={{ width: `${level}%`, transform: `scaleX(${inView ? 1 : 0})`, transitionDelay: inView ? `${delay}ms` : undefined }}
+      />
+    </div>
+  );
+};
+
 const Skills = () => (
   <Section id="skills" index="02" eyebrow="Skills" title="Skills & technologies">
     <div className="grid gap-x-12 gap-y-10 sm:grid-cols-2">
@@ -85,7 +98,7 @@ const Skills = () => (
             {category.title}
           </h3>
           <ul className="mt-4 space-y-3.5">
-            {category.skills.map((skill) => (
+            {category.skills.map((skill, skillIndex) => (
               <li key={skill.name}>
                 <div className="flex items-baseline justify-between gap-3 text-sm">
                   <span>{skill.name}</span>
@@ -95,9 +108,7 @@ const Skills = () => (
                     <span aria-hidden="true">%</span>
                   </span>
                 </div>
-                <div aria-hidden="true" className="mt-1.5 h-1 overflow-hidden rounded-full bg-muted">
-                  <div className="h-full rounded-full bg-primary" style={{ width: `${skill.level}%` }} />
-                </div>
+                <SkillBar level={skill.level} delay={skillIndex * 70} />
               </li>
             ))}
           </ul>

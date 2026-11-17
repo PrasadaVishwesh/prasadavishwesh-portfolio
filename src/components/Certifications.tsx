@@ -1,5 +1,6 @@
 import { ExternalLink } from "lucide-react";
 import Section from "@/components/Section";
+import Reveal from "@/components/Reveal";
 import { Badge } from "@/components/ui/badge";
 
 const certifications = [
@@ -57,9 +58,11 @@ const certifications = [
 const Certifications = () => (
   <Section id="certifications" index="04" eyebrow="Credentials" title="Certifications">
     <ul className="divide-y divide-border border-y border-border">
-      {certifications.map((cert) => (
-        <li
+      {certifications.map((cert, index) => (
+        <Reveal
+          as="li"
           key={cert.title}
+          delay={Math.min(index, 4) * 50}
           className="flex flex-col gap-3 py-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6"
         >
           <div className="min-w-0">
@@ -75,13 +78,13 @@ const Certifications = () => (
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`View credential: ${cert.title} (opens in a new tab)`}
-              className="inline-flex items-center gap-1.5 whitespace-nowrap text-sm font-medium text-primary underline-offset-4 hover:underline"
+              className="group/link inline-flex items-center gap-1.5 whitespace-nowrap text-sm font-medium text-primary underline-offset-4 hover:underline"
             >
               View credential
-              <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+              <ExternalLink className="h-3.5 w-3.5 transition-transform duration-150 group-hover/link:-translate-y-px group-hover/link:translate-x-px" aria-hidden="true" />
             </a>
           </div>
-        </li>
+        </Reveal>
       ))}
     </ul>
   </Section>

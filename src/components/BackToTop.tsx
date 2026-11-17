@@ -19,7 +19,7 @@ const BackToTop = () => {
       variant="outline"
       size="icon"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      className="fixed bottom-4 right-4 z-40 shadow-overlay sm:bottom-6 sm:right-6"
+      className="fixed bottom-4 right-4 z-40 shadow-overlay motion-safe:animate-fade-up sm:bottom-6 sm:right-6"
       aria-label="Back to top"
     >
       <ArrowUp />

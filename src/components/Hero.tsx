@@ -9,27 +9,27 @@ const Hero = () => (
   <section id="hero" aria-labelledby="hero-title" className="border-b border-border">
     <div className="page-container grid items-center gap-10 py-14 sm:py-16 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16 lg:py-24">
       <div>
-        <p className="eyebrow flex items-center gap-3">
+        <p className="eyebrow flex items-center gap-3 motion-safe:animate-fade-up">
           <span aria-hidden="true" className="h-px w-8 bg-primary" />
           AI Engineer
           <span className="font-normal normal-case tracking-normal text-muted-foreground">/ Greater Noida, India</span>
         </p>
 
-        <h1 id="hero-title" className="mt-6 text-4xl font-semibold leading-[1.1] sm:text-5xl">
+        <h1 id="hero-title" style={{ animationDelay: "80ms" }} className="mt-6 text-4xl font-semibold leading-[1.1] motion-safe:animate-fade-up sm:text-5xl">
           Jatangi Y D M V
           <br />
           Prasada Vishwesh
         </h1>
 
-        <p className="mt-5 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
+        <p style={{ animationDelay: "160ms" }} className="mt-5 max-w-xl text-base leading-7 text-muted-foreground motion-safe:animate-fade-up sm:text-lg sm:leading-8">
           Building useful AI products with generative models, computer vision, and thoughtful engineering.
         </p>
 
-        <div className="mt-8 flex flex-wrap gap-3">
+        <div style={{ animationDelay: "240ms" }} className="mt-8 flex flex-wrap gap-3 motion-safe:animate-fade-up">
           <Button asChild size="lg" className="w-full sm:w-auto">
             <Link to={{ pathname: "/", hash: "#projects" }}>
               Explore projects
-              <ArrowDown />
+              <ArrowDown className="transition-transform duration-150 group-hover:translate-y-0.5" />
             </Link>
           </Button>
           <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
@@ -40,7 +40,7 @@ const Hero = () => (
           </Button>
         </div>
 
-        <ul className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-border pt-5 text-sm text-muted-foreground">
+        <ul style={{ animationDelay: "320ms" }} className="mt-10 flex flex-wrap items-center motion-safe:animate-fade-up gap-x-6 gap-y-2 border-t border-border pt-5 text-sm text-muted-foreground">
           <li className="inline-flex items-center gap-2">
             <span aria-hidden="true" className="h-2 w-2 rounded-full bg-primary" />
             Open to opportunities
@@ -71,7 +71,7 @@ const Hero = () => (
         </ul>
       </div>
 
-      <picture className="mx-auto block w-full max-w-xs sm:max-w-sm lg:ml-auto">
+      <picture style={{ animationDelay: "120ms" }} className="mx-auto block w-full max-w-xs motion-safe:animate-fade-in sm:max-w-sm lg:ml-auto">
         <source
           type="image/webp"
           srcSet={`${portrait480} 480w, ${portrait768} 768w`}

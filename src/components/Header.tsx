@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FileDown, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -54,6 +54,31 @@ const Header = () => {
   const isHome = pathname === "/";
   const active = useActiveSection(isHome);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const progressRef = useRef<HTMLDivElement>(null);
+
+  // One passive scroll listener drives both the elevated-header state and the reading-progress line.
+  useEffect(() => {
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
+      if (progressRef.current) progressRef.current.style.transform = `scaleX(${progress})`;
+      setScrolled(window.scrollY > 8);
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, [pathname]);
 
   // Close the mobile menu on navigation and on Escape.
   useEffect(() => setMenuOpen(false), [pathname]);
@@ -65,7 +90,12 @@ const Header = () => {
   }, [menuOpen]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background">
+    <header
+      className={cn(
+        "sticky top-0 z-50 border-b border-border bg-background transition-shadow duration-200",
+        scrolled && "shadow-[0_8px_16px_-14px_hsl(var(--foreground)/0.35)]",
+      )}
+    >
       <a
         href="#main"
         className="sr-only rounded-md bg-primary px-3 py-2 text-sm font-medium text-primary-foreground focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-[60]"
@@ -88,7 +118,7 @@ const Header = () => {
               key={item.id}
               to={{ pathname: "/", hash: `#${item.id}` }}
               aria-current={active === item.id ? "location" : undefined}
-              className="rounded-md px-2.5 py-1.5 text-sm text-muted-foreground transition-colors duration-150 hover:bg-accent hover:text-foreground aria-[current=location]:bg-accent aria-[current=location]:text-foreground"
+              className="relative rounded-md px-2.5 py-1.5 text-sm text-muted-foreground transition-colors duration-150 after:absolute after:inset-x-2.5 after:-bottom-px after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-primary after:transition-transform after:duration-200 hover:text-foreground aria-[current=location]:text-foreground aria-[current=location]:after:scale-x-100 hover:after:scale-x-100"
             >
               {item.label}
             </Link>
@@ -117,29 +147,41 @@ const Header = () => {
         </div>
       </div>
 
-      <div id="mobile-menu" hidden={!menuOpen} className="border-t border-border lg:hidden">
-        <nav aria-label="Mobile" className="page-container flex flex-col py-2">
-          {navigation.map((item) => (
-            <Link
-              key={item.id}
-              to={{ pathname: "/", hash: `#${item.id}` }}
-              aria-current={active === item.id ? "location" : undefined}
-              className={cn(
-                "rounded-md px-2 py-3 text-base text-muted-foreground transition-colors duration-150 hover:text-foreground",
-                "aria-[current=location]:font-medium aria-[current=location]:text-foreground",
-              )}
-            >
-              {item.label}
-            </Link>
-          ))}
-          <Button asChild variant="outline" className="my-2 sm:hidden">
-            <a href={RESUME_HREF} download={RESUME_NAME}>
-              <FileDown />
-              Download resume
-            </a>
-          </Button>
-        </nav>
+      <div
+        id="mobile-menu"
+        aria-hidden={!menuOpen}
+        className={cn(
+          "grid transition-[grid-template-rows,visibility] duration-200 ease-out motion-reduce:transition-none lg:hidden",
+          menuOpen ? "visible grid-rows-[1fr]" : "invisible grid-rows-[0fr]",
+        )}
+      >
+        <div className="min-h-0 overflow-hidden">
+          <nav aria-label="Mobile" className="page-container flex flex-col border-t border-border py-2">
+            {navigation.map((item) => (
+              <Link
+                key={item.id}
+                to={{ pathname: "/", hash: `#${item.id}` }}
+                aria-current={active === item.id ? "location" : undefined}
+                className="rounded-md px-2 py-3 text-base text-muted-foreground transition-colors duration-150 hover:text-foreground aria-[current=location]:font-medium aria-[current=location]:text-foreground"
+              >
+                {item.label}
+              </Link>
+            ))}
+            <Button asChild variant="outline" className="my-2 sm:hidden">
+              <a href={RESUME_HREF} download={RESUME_NAME}>
+                <FileDown />
+                Download resume
+              </a>
+            </Button>
+          </nav>
+        </div>
       </div>
+
+      <div
+        ref={progressRef}
+        aria-hidden="true"
+        className="absolute inset-x-0 -bottom-px h-0.5 origin-left scale-x-0 bg-primary motion-reduce:hidden"
+      />
     </header>
   );
 };

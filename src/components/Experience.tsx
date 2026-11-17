@@ -1,4 +1,5 @@
 import Section from "@/components/Section";
+import Reveal from "@/components/Reveal";
 
 const timeline = [
   {
@@ -32,8 +33,8 @@ const timeline = [
 const Experience = () => (
   <Section id="experience" index="06" eyebrow="Journey" title="Education & experience" tone="muted">
     <ol className="space-y-10 border-l border-border pl-6">
-      {timeline.map((item) => (
-        <li key={item.title} className="relative">
+      {timeline.map((item, index) => (
+        <Reveal as="li" key={item.title} delay={index * 120} className="relative">
           <span
             aria-hidden="true"
             className="absolute -left-[28.5px] top-2 h-2 w-2 rounded-full bg-primary ring-4 ring-background"
@@ -50,7 +51,7 @@ const Experience = () => (
               <li key={highlight}>{highlight}</li>
             ))}
           </ul>
-        </li>
+        </Reveal>
       ))}
     </ol>
   </Section>

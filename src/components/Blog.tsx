@@ -1,4 +1,5 @@
 import Section from "@/components/Section";
+import Reveal from "@/components/Reveal";
 import { Badge } from "@/components/ui/badge";
 
 const articles = [
@@ -49,7 +50,7 @@ const Blog = () => (
   >
     <ol className="divide-y divide-border border-y border-border">
       {articles.map((article, index) => (
-        <li key={article.title} className="py-6">
+        <Reveal as="li" key={article.title} delay={Math.min(index, 3) * 50} className="py-6">
           <article aria-labelledby={`article-${index}`}>
             <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
               <time dateTime={article.date} className="tabular-nums">
@@ -73,7 +74,7 @@ const Blog = () => (
               ))}
             </ul>
           </article>
-        </li>
+        </Reveal>
       ))}
     </ol>
 
