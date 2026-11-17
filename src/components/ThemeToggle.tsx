@@ -2,23 +2,29 @@ import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 
-export function ThemeToggle() {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+type Theme = "light" | "dark";
 
+export function ThemeToggle() {
+  const [theme, setTheme] = useState<Theme>("light");
+
+  // The class is set before first paint by the inline script in index.html; read it back here.
   useEffect(() => {
-    const root = window.document.documentElement;
-    const initialTheme = root.classList.contains("dark") ? "dark" : "light";
-    setTheme(initialTheme);
+    setTheme(document.documentElement.classList.contains("dark") ? "dark" : "light");
   }, []);
 
   const toggleTheme = () => {
-    const root = window.document.documentElement;
-    const newTheme = theme === "light" ? "dark" : "light";
-    
+    const root = document.documentElement;
+    const next: Theme = theme === "light" ? "dark" : "light";
+
     root.classList.remove(theme);
-    root.classList.add(newTheme);
-    setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
+    root.classList.add(next);
+    root.style.colorScheme = next;
+    setTheme(next);
+    try {
+      localStorage.setItem("theme", next);
+    } catch {
+      /* storage unavailable (private mode); the choice just won't persist */
+    }
   };
 
   return (
@@ -26,14 +32,9 @@ export function ThemeToggle() {
       variant="ghost"
       size="icon"
       onClick={toggleTheme}
-      className="hover:scale-110 transition-transform"
-      aria-label="Toggle theme"
+      aria-label={theme === "light" ? "Switch to dark theme" : "Switch to light theme"}
     >
-      {theme === "light" ? (
-        <Moon className="h-5 w-5" />
-      ) : (
-        <Sun className="h-5 w-5" />
-      )}
+      {theme === "light" ? <Moon /> : <Sun />}
     </Button>
   );
 }

@@ -1,20 +1,7 @@
-import { useEffect } from "react";
-import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Github, ExternalLink, Utensils, BarChart2, Search, Database } from "lucide-react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import { Utensils, BarChart2, Search, Database } from "lucide-react";
+import ProjectLayout from "@/components/ProjectLayout";
 
 const SmartChief = () => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   const techStack = [
     "React.js",
     "Axios",
@@ -145,178 +132,39 @@ const useRecipeManager = () => {
   ];
 
   return (
-    <div className="min-h-screen">
-      <Header />
-      <main className="pt-20">
-        {/* Hero Section */}
-        <section className="py-12 sm:py-20 bg-gradient-subtle">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <Button
-                variant="ghost"
-                onClick={() => navigate("/")}
-                className="mb-8 hover:translate-x-1 transition-transform"
-              >
-                <ArrowLeft className="h-4 w-4 mr-2" />
-                Back to Portfolio
-              </Button>
-
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-                Smart Chief: AI Recipe & Nutrition App
-              </h1>
-              <p className="text-xl text-muted-foreground max-w-3xl mb-8">
-                AI-powered recipe and nutrition web application that helps users find recipes and understand 
-                nutritional values. Built with React.js and integrated with Edamam APIs for comprehensive 
-                food data and beautiful Chart.js visualizations.
-              </p>
-
-              <div className="flex flex-wrap gap-3 mb-8">
-                {techStack.map((tech) => (
-                  <Badge key={tech} variant="secondary" className="bg-primary/10 text-primary border border-primary/20">
-                    {tech}
-                  </Badge>
-                ))}
-              </div>
-
-              <div className="flex gap-4">
-                <Button variant="hero" size="lg" onClick={() => window.open("https://github.com/PrasadaVishwesh/smart-chief-plan", "_blank")}>
-                  <Github className="h-5 w-5" />
-                  View Source
-                </Button>
-                <Button variant="glass" size="lg" onClick={() => window.open("https://smart-chef-prasadavishwesh.vercel.app/", "_blank")}>
-                  <ExternalLink className="h-5 w-5" />
-                  Live Demo
-                </Button>
-                <Button variant="outline" size="lg" onClick={() => window.open("https://prasada-vishwesh-portfolio.lovable.app/", "_blank")}>
-                  <ExternalLink className="h-5 w-5" />
-                  Portfolio
-                </Button>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Features Section */}
-        <section className="py-16">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold mb-12 text-center">Key Features</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-              {features.map((feature, idx) => (
-                <motion.div
-                  key={feature.title}
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.1 }}
-                >
-                  <Card className="p-6 h-full hover:shadow-glow transition-all bg-card/50 backdrop-blur-sm group">
-                    <div className="flex items-start gap-4">
-                      <div className="p-3 rounded-xl bg-gradient-primary group-hover:shadow-glow transition-all">
-                        <feature.icon className="h-6 w-6 text-primary-foreground" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
-                        <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
-                      </div>
-                    </div>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Technical Implementation */}
-        <section className="py-16 bg-gradient-subtle">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold mb-12 text-center">Technical Implementation</h2>
-            <div className="max-w-5xl mx-auto space-y-8">
-              {codeSnippets.map((snippet, idx) => (
-                <motion.div
-                  key={snippet.title}
-                  initial={{ opacity: 0, x: idx % 2 === 0 ? -40 : 40 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: idx * 0.2 }}
-                >
-                  <Card className="overflow-hidden bg-card/50 backdrop-blur-sm">
-                    <div className="bg-accent/10 px-6 py-4 border-b border-border/50">
-                      <h3 className="text-lg font-bold">{snippet.title}</h3>
-                      <Badge variant="secondary" className="mt-2">{snippet.language}</Badge>
-                    </div>
-                    <pre className="p-6 overflow-x-auto">
-                      <code className="text-sm text-muted-foreground font-mono leading-relaxed">
-                        {snippet.code}
-                      </code>
-                    </pre>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* User Flow & Outcomes */}
-        <section className="py-16">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold mb-8 text-center">Project Outcomes & User Flow</h2>
-            <div className="max-w-4xl mx-auto space-y-6">
-              <Card className="p-8 bg-card/50 backdrop-blur-sm">
-                <h3 className="text-xl font-bold mb-4 text-accent">User Flow</h3>
-                <ul className="space-y-3">
-                  {[
-                    "User enters a food item in the search bar",
-                    "App fetches recipes from Edamam API in real-time",
-                    "Display comprehensive nutritional breakdown (calories, proteins, fats, carbs)",
-                    "Interactive charts visualize nutritional data for easy understanding",
-                    "Users can view detailed ingredient lists and cooking instructions",
-                  ].map((step, idx) => (
-                    <motion.li
-                      key={idx}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: idx * 0.1 }}
-                      className="flex items-start gap-3"
-                    >
-                      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-accent/20 text-accent font-bold flex-shrink-0">
-                        {idx + 1}
-                      </div>
-                      <p className="text-muted-foreground leading-relaxed mt-1">{step}</p>
-                    </motion.li>
-                  ))}
-                </ul>
-              </Card>
-
-              <Card className="p-8 bg-card/50 backdrop-blur-sm">
-                <h3 className="text-xl font-bold mb-4 text-primary">Key Achievements</h3>
-                <ul className="space-y-3">
-                  {[
-                    "Integrated real-time nutritional analysis with simple, intuitive interface",
-                    "Learned API integration, React data management, and UI building",
-                    "Showcased ability to independently design, develop, and execute full-stack project",
-                    "Implemented responsive design ensuring seamless experience across devices",
-                  ].map((achievement, idx) => (
-                    <motion.li
-                      key={idx}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: idx * 0.1 }}
-                      className="flex items-start gap-3"
-                    >
-                      <div className="h-2 w-2 rounded-full bg-primary mt-2 flex-shrink-0 animate-pulse" />
-                      <p className="text-muted-foreground leading-relaxed">{achievement}</p>
-                    </motion.li>
-                  ))}
-                </ul>
-              </Card>
-            </div>
-          </div>
-        </section>
-      </main>
-      <Footer />
-    </div>
+    <ProjectLayout
+      slug="smart-chief"
+      title="Smart Chief: AI Recipe & Nutrition App"
+      summary="AI-powered recipe and nutrition web application that helps users find recipes and understand nutritional values. Built with React.js and integrated with Edamam APIs for comprehensive food data and beautiful Chart.js visualizations."
+      techStack={techStack}
+      github="https://github.com/PrasadaVishwesh/smart-chief-plan"
+      demo="https://smart-chef-prasadavishwesh.vercel.app/"
+      features={features}
+      codeSnippets={codeSnippets}
+      outcomesTitle="Project outcomes & user flow"
+      outcomeGroups={[
+        {
+          title: "User flow",
+          ordered: true,
+          items: [
+            "User enters a food item in the search bar",
+            "App fetches recipes from Edamam API in real-time",
+            "Display comprehensive nutritional breakdown (calories, proteins, fats, carbs)",
+            "Interactive charts visualize nutritional data for easy understanding",
+            "Users can view detailed ingredient lists and cooking instructions",
+          ],
+        },
+        {
+          title: "Key achievements",
+          items: [
+            "Integrated real-time nutritional analysis with simple, intuitive interface",
+            "Learned API integration, React data management, and UI building",
+            "Showcased ability to independently design, develop, and execute full-stack project",
+            "Implemented responsive design ensuring seamless experience across devices",
+          ],
+        },
+      ]}
+    />
   );
 };
 
