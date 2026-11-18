@@ -1,4 +1,5 @@
 - [x] Complete the requested read-only security audit without modifying project code.
-- [ ] Review the uploaded design brief and apply its requested portfolio updates.
-- [ ] Replace the portfolio profile picture with the newly uploaded image and verify it displays.
-- [ ] Verify changes, reread this roadmap, and commit the work.
+- [x] Review the uploaded design brief and confirm the existing React/Vite site structure.
+- [x] Replace the portfolio portrait with the newly uploaded photo (already present byte-for-byte in the active profile asset).
+- [ ] Finish the restrained visual refresh across home sections and project detail pages, preserving working links and contact behavior.
+- [ ] Verify desktop/mobile rendering, navigation, portrait, diagnostics, and project links; reread this roadmap and commit the work.
