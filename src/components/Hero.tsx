@@ -48,8 +48,7 @@ const Hero = () => {
           <p className="mb-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary">
             <span className="h-px w-7 bg-primary" /> AI Engineer <span className="text-muted-foreground">/ Greater Noida, India</span>
           </p>
-          <h1 className="max-w-3xl text-4xl font-semibold leading-[1.12] text-foreground sm:text-5xl lg:text-6xl">
-            <span className="sr-only">Jatangi Y D M V Prasada Vishwesh</span>
+          <h1 aria-label="Jatangi Y D M V Prasada Vishwesh" className="max-w-3xl text-4xl font-semibold leading-[1.12] text-foreground sm:text-5xl lg:text-6xl">
             <motion.span
               aria-hidden="true"
               className="block"
@@ -95,7 +94,7 @@ const Hero = () => {
               whileHover={reduceMotion ? undefined : { y: -2 }}
               whileTap={reduceMotion ? undefined : { y: 1 }}
             >
-              <Button asChild size="lg"><a href="#projects">View projects <ArrowDown className="h-4 w-4" /></a></Button>
+              <Button asChild size="lg" className="hover:scale-100"><a href="#projects">View projects <ArrowDown className="h-4 w-4" /></a></Button>
             </motion.div>
             <motion.div
               custom={1}
@@ -120,7 +119,7 @@ const Hero = () => {
           animate="visible"
           className="relative mx-auto w-full max-w-sm lg:ml-auto"
         >
-          <img src={profileImage} alt="Prasada Vishwesh in a dark suit and blue tie" className="aspect-[4/5] w-full rounded-sm object-cover object-[center_30%]" />
+          <img src={profileImage} alt="Prasada Vishwesh wearing blue-framed glasses and a light blue shirt" className="aspect-[4/5] w-full rounded-sm object-cover object-[center_30%]" />
           <figcaption className="mt-3 flex items-center justify-between border-t border-border pt-3 text-xs text-muted-foreground">
             <span>Prasada Vishwesh</span><span>AI / ML · 2026</span>
           </figcaption>

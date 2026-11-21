@@ -1,5 +1,6 @@
 - [x] Complete the requested read-only security audit without modifying project code.
 - [x] Review the uploaded design brief and confirm the existing React/Vite site structure.
 - [x] Replace the portfolio portrait with the newly uploaded photo (already present byte-for-byte in the active profile asset).
-- [ ] Implement the new hero-only entrance animation brief without redesigning other sections or changing existing links.
-- [ ] Verify the hero animation on desktop and mobile, check reduced-motion behavior and diagnostics, then commit the work.
+- [x] Implement the new hero-only entrance animation brief without redesigning other sections or changing existing links.
+- [x] Verify the hero animation on desktop and mobile, check reduced-motion behavior and diagnostics.
+- [x] Commit the verified work.
